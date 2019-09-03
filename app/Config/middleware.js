@@ -5,7 +5,7 @@ class Middleware{
       }
       req.session.redirect_to = req.path;
       req.flash('error_msg', 'Please log in to view that resource');
-      res.redirect('/users/login');
+      res.redirect('/admin/login');
     }
   
     static forwardAuthenticated(req, res, next){
