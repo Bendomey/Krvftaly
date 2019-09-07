@@ -12,7 +12,7 @@ import ejs from 'ejs';
 import path from 'path';
 import ErrorHandlers from './Config/ErrorHandlers';
 import Authentication from './Config/Passport';
-
+import Helper from './Config/Helpers';
 
 
 //create instance of the app
@@ -64,6 +64,7 @@ app.use(flash());
 
 // Global variables
 app.use(function(req, res, next) {
+  res.locals.h = Helper;
   res.locals.user = req.user || null;
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
@@ -73,7 +74,7 @@ app.use(function(req, res, next) {
 
 
 //bring in web routes
-app.use("/",webRouter);
+app.use("/", webRouter);
 
 //bring in api routes
 app.use('/api',apiRouter);

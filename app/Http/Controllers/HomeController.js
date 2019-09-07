@@ -35,6 +35,7 @@ class HomeController {
             title:'Blog Posts'
         })
     }
+
 }
 
 export default HomeController

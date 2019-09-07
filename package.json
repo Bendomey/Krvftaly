@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "server": "nodemon app.js",
+    "client": "npm start --prefix Dashboard",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
-  "author": "",
+  "author": "Hello World",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^4.1.2",
     "connect-flash": "^0.1.1",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
@@ -25,6 +28,7 @@
     "multer": "^1.4.2",
     "mysql2": "^1.6.5",
     "nodemailer": "^6.3.0",
+    "nodemailer-smtp-transport": "^2.7.4",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pusher": "^2.2.2",

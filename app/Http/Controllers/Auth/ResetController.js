@@ -31,12 +31,12 @@ class ResetController{
 		await user.save();
 		//send email to user
 		const resetURL = `http://${req.headers.host}/admin/account/reset/${user.resetPasswordToken}`;
-        await mail.send({
-			user,
-			subject:'Password Reset Link - PeersTronix',
-			resetURL,
-			filename:'reset_password'
-        });	
+        // await mail.send({
+			// user,
+			// subject:'Password Reset Link - PeersTronix',
+			// resetURL,
+			// filename:'reset_password'
+        // });	
         req.flash('success_msg',`You have been mailed a password reset link ${resetURL}`);
 		res.redirect('/admin/login');
     }

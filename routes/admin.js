@@ -40,6 +40,7 @@ Route.post(
     '/account/forgot_password',
     ErrorHandler.catchErrors(ResetController.send_forgot_mail)
 );
+
 Route.get(
     '/account/reset/:token',
     ErrorHandler.catchErrors(ResetController.reset)

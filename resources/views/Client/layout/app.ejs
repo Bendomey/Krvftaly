@@ -10,7 +10,7 @@
 
         <!-- Google Fonts -->
         <link href="http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7COswald:300,400,500,600,700" rel="stylesheet">
-
+        
         <link rel="stylesheet" href="/assets/css/plugins.min.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         
@@ -28,22 +28,6 @@
                         <img src="/assets/images/logo.png" alt="Logo">
                         <span class="sr-only">Krvftaly</span>
                     </a>
-
-                    <div class="header-dropdowns">
-                        <div class="dropdown header-dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
-                                USD
-                                <i class="fa fa-caret-down"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" title="Euro">EUR</a></li>
-                                <li><a href="#" title="Pound">PND</a></li>
-                                <li><a href="#" title="Yen">YEN</a></li>
-                            </ul>
-                        </div><!-- End .dropddown -->
-
-                        
-                    </div><!-- End .header-dropdowns -->
 
                     <div class="search-form-container">
                         <a href="#" class="search-form-toggle" title="Toggle Search"><i class="fa fa-search"></i></a>
@@ -235,12 +219,10 @@
                                 <h4 class="widget-title">Newsletter</h4>
                                 <p>Signup for our newsletter</p>
 
-                                <form action="#">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Your Email" required>
-                                        <input type="submit" value="GO" class="btn">
-                                    </div><!-- End .form-group -->
-                                </form>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control newsletterInput" placeholder="Your Email" required>
+                                    <a class="btn newsletterBtn">GO</a>
+                                </div><!-- End .form-group -->
 
                                 <div class="social-icons">
                                     <a href="#" class="social-icon" title="Facebook"><i class="fa fa-facebook"></i></a>
@@ -287,6 +269,8 @@
     <script type="text/javascript" src="/assets/js/extensions/revolution.extension.parallax.min.js"></script>
     <script type="text/javascript" src="/assets/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script type="text/javascript" src="/assets/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="/js/bootstrap-notify.js"></script>
+    <script src="/js/client.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('.year').append(new Date().getFullYear())

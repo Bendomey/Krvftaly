@@ -48,25 +48,25 @@
                 <h2 class="title">Send a Message</h2>
                 <p class="title-desc">Send Us a Message</p>
             </div><!-- End .title-group -->
-
-            <form action="#" class="contact-form">
+            <%- include('../partials/messages')%>
+            <form method="POST" action="/contacts" class="contact-form">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Full Name*</label>
-                            <input type="text" class="form-control" required>
+                            <input name="name" type="text" class="form-control" required>
                         </div><!-- End .form-group -->
 
                         <div class="form-group">
-                            <label>Email*</label>
-                            <input type="email" class="form-control" required>
+                            <label>Contact*</label>
+                            <input type="tel" name="contact" class="form-control" required>
                         </div><!-- End .form-group -->
                     </div><!-- End .col-sm-6 -->
 
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Message*</label>
-                            <textarea cols="30" rows="6" class="form-control" required></textarea>
+                            <textarea cols="30" rows="6" name="message" class="form-control" required></textarea>
                         </div><!-- End .form-group -->
                     </div><!-- End .col-sm-6 -->
                 </div><!-- End .row -->

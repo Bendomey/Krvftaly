@@ -47,13 +47,14 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li><a href="/dashboard"><i class="ti-dashboard"></i> <span>dashboard</span></a></li>
+                            <li><a href="/dashboard/contact"><i class="ti-comments-smiley"></i> <span>contacts</span></a></li>                            
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Sidebar
-                                        Types
-                                    </span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i><span>
+                                    Categories
+                                </span></a>
                                 <ul class="collapse">
-                                    <li><a href="index.html">Left Sidebar</a></li>
-                                    <li><a href="index3-horizontalmenu.html">Horizontal Sidebar</a></li>
+                                    <li><a href="/dashboard/categories/add">Add</a></li>
+                                    <li><a href="/dashboard/categories/view">View</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -450,6 +451,7 @@
     <!-- others plugins -->
     <script src="/js/plugins.js"></script>
     <script src="/assets/js/scripts.js"></script>
+    <script src="/js/dashboard.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('.year').append(new Date().getFullYear());

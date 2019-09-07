@@ -17,6 +17,12 @@ class DashboardController{
             title:'Signup'
         });
     }
+
+    static contact(req, res){
+        res.render('Dashboard/contact',{
+            title:'Contact'
+        });
+    }
 }
 
 export default DashboardController;

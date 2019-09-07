@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+var smtpTransport = require('nodemailer-smtp-transport');
 import htmlToText from 'html-to-text';
 import ejs from 'ejs';
 
@@ -28,6 +29,10 @@ class Mail{
 			html,
 			text
 		};
+		Transport.verify((err, success) => {
+			if (err) console.error(err);
+			console.log('Your config is correct');
+		});
 		return Transport.sendMail(mailOptions);
 	}
 }
