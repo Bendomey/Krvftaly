@@ -4,7 +4,12 @@ const Newsletter = Models.Newsletter;
 
 class ContactController{
     static async index(req, res){
-        let contacts = await Contact.findAll();
+        let contacts = await Contact.findAll({
+            order:[
+                ['attended','ASC'],
+                ['createdAt','DESC']
+            ]
+        });
         res.render('Dashboard/contact',{
             title:"Contacts",
             contacts
@@ -15,6 +20,20 @@ class ContactController{
         await Contact.create(req.body);
         req.flash('success_msg', 'Your request was succesfully sent');
         res.redirect('back');
+    }
+
+
+    static async attend(req, res){
+        await Contact.update({
+            attended:'1',
+            updatedAt:Date.now
+        },{
+            where:{
+                id:req.body.id
+            }
+        }); 
+        req.flash('success_msg','Your request has been attended to');
+        res.redirect('back'); 
     }
 
     static async destroy(req, res){
@@ -32,6 +51,7 @@ class ContactController{
         //send mail for welcomming them
         res.json(true);
     }
+
 }
 
 export default ContactController;

@@ -6,7 +6,7 @@
                 <div class="breadcrumbs-area clearfix">
                     <h4 class="page-title pull-left">Dashboard</h4>
                     <ul class="breadcrumbs pull-left">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/dashboard">Home</a></li>
                         <li><span>Contacts</span></li>
                     </ul>
                 </div>
@@ -39,6 +39,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Contact</th>
                                             <th scope="col">Time</th>
+                                            <th scope="col">status</th>
                                             <th scope="col">action</th>
                                         </tr>
                                     </thead>
@@ -49,7 +50,17 @@
                                                 <td><%= contact.contact%></td>
                                                 <td><%= h.moment(contact.createdAt).fromNow()%></td>
                                                 <td>
+                                                    <% if(contact.attended == '0'){%>
+                                                        <span class="status-p bg-info">pending</span>
+                                                    <%}else{%>
+                                                        <span class="status-p bg-success">Attended</span>
+                                                    <%}%>
+                                                </td>
+                                                <td>
                                                     <ul class="d-flex justify-content-center">
+                                                        <% if(contact.attended == '0'){%>
+                                                            <li class="mr-3"><a data-id="<%= contact.id%>" class="attendContactBtn text-success"><i class="fa fa-check"></i></a></li>
+                                                        <%}%>
                                                         <li class="mr-3"><a data-message="<%= contact.message%>" class="viewContactBtn text-secondary"><i class="fa fa-eye"></i></a></li>
                                                         <li><a data-id="<%= contact.id%>" class="text-danger deleteContactBtn"><i class="ti-trash"></i></a></li>
                                                     </ul>
@@ -69,6 +80,7 @@
             </div>
         </div>
     </div>
+
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteContact">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -90,6 +102,28 @@
         </div>
     </div>
 </div>
+
+<!-- Attend Modal -->
+<div class="modal fade" id="attendContact">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attend To</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you have attended to this customer?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form method="POST" action="/dashboard/attend_contact">
+                        <input type="hidden" name="id" class="attendContactId">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!-- View Modal -->
 <div class="modal fade" id="viewContact">

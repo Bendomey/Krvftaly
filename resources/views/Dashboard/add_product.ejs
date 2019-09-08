@@ -1,0 +1,119 @@
+<% extend('./layout/app') %>
+<!-- page title area start -->
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="breadcrumbs-area clearfix">
+                <h4 class="page-title pull-left">Dashboard</h4>
+                <ul class="breadcrumbs pull-left">
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><span>Product</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 clearfix">
+            <div class="user-profile pull-right">
+                <img class="avatar user-thumb" src="/assets/images/author/avatar.png" alt="avatar">
+                <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><%= user.name%> <i class="fa fa-angle-down"></i></h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Profile Settings</a>
+                    <a class="dropdown-item" href="/admin/logout">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- page title area end -->
+<div class="main-content-inner">
+    <%- include('../partials/dashboard_messages')%>
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Add Product</h4>
+                <form enctype="multipart/form-data" method="POST">
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Product name" required>
+                            </div>
+                            <div class="col">
+                                <label for="price">Price</label>
+                                <input type="text" name="price" class="form-control priceTag" placeholder="Product price" required>
+                                <small id="passwordHelpInline" class="text-danger showPriceError" hidden>
+                                    Requires numbers only without currency sign!
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="category">Category</label>
+                                <select required name="category" class="custom-select categoryTag" id="">
+                                    <option value="default" >Please select...</option>
+                                    <% if(categories.length > 0){ %>
+                                        <% categories.forEach(category=>{ %>
+                                            <option value="<%= category.id%>"><%= category.name%></option>
+                                        <%})%>
+                                    <% } %>
+                                </select>
+                                <small id="passwordHelpInline" class="text-danger showCategoryError" hidden>
+                                    This is required!
+                                </small>
+                            </div>
+                            <div class="col">
+                                <label for="rating">Rating</label>
+                                <select required name="rating"  class="custom-select ratingTag" id="">
+                                    <option value="default">Please select ...</option>
+                                    <% for(let i = 1; i <= 5; i++){ %>
+                                        <option value="<%= i%>"><%= i%></option>
+                                    <% } %>
+                                </select>
+                                <small id="passwordHelpInline" class="text-danger showRatingError" hidden>
+                                    This is required!
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="short_description">Short Description</label>
+                                <textarea name="short_description" class="form-control" required id="" cols="5" rows="5"></textarea>
+                            </div>
+                            <div class="col">
+                                <label for="price">Description</label>
+                                <textarea name="description" class="form-control" required id="" cols="5" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="thumb_image">Thumb Image</label>
+                                <small id="passwordHelpInline" class="text-muted">
+                                    Note that you can select multiple files
+                                </small>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="pics" multiple accept="image/png, image/jpeg, image/jpg" required id="customFile">
+                                    <label class="custom-file-label" for="images">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="price">Other Information</label>
+                                <small id="passwordHelpInline" class="text-muted">
+                                    Note that these are not required.
+                                </small>
+                                <div class="other_information">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="">Attribute and Value</span>
+                                        </div>
+                                        <input type="text" name="information[0][attribute]" class="form-control">
+                                        <input type="text" name="information[0][value]" class="form-control">
+                                    </div>
+                                </div>
+                                <a class="btn btn-info btn-sm mt-1 addOtherInformation text-light">Add More Info</a>
+                            </div>
+                        </div>
+                    <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4 pull-right submitProduct">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Contacts', {
+    return queryInterface.createTable('Reviews', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,18 +12,20 @@ module.exports = {
         type: Sequelize.STRING,
         required:true
       },
-      contact: {
+      email: {
         type: Sequelize.STRING,
         required:true
       },
-      message: {
+      review: {
         type: Sequelize.TEXT,
         required:true
       },
-      attended:{
-        type:Sequelize.ENUM('0','1'),
-        required:true,
-        defaultValue:'0'
+      rating: {
+        type: Sequelize.ENUM('1','2','3','4','5'),
+        required:true
+      },
+      productId:{
+        type:Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +38,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Contacts');
+    return queryInterface.dropTable('Reviews');
   }
 };
